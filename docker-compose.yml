@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: jacob
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: testgrader
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    ports:
+      - "8501:8501"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USER: jacob
+      DB_PASSWORD: password123
+      DB_NAME: testgrader
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+    volumes:
+      - ./app:/app
+
+volumes:
+  postgres_data:
