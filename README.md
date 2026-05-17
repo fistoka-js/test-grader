@@ -18,8 +18,7 @@ A Dockerized web application that uses OCR and AI to automatically grade student
 - **Streamlit** — Web UI
 - **PostgreSQL** — Relational database for storing tests, questions, and submissions
 - **Docker + Docker Compose** — Containerization and orchestration
-- **Tesseract OCR + OpenCV** — Image preprocessing pipeline
-- **Gemini API (Google)** — Vision-based answer extraction and short answer grading
+- **Gemini API (Google)** — Vision-based OCR for answer extraction and AI grading of short answer questions
 - **Pandas** — Data manipulation and results display
 
 ## Database Schema
