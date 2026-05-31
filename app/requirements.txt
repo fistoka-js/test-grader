@@ -1,7 +1,0 @@
-streamlit
-psycopg2-binary
-pandas
-pytesseract
-pillow
-google-generativeai
-opencv-python-headless

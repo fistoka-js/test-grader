@@ -36,22 +36,5 @@ services:
     volumes:
       - ./frontend/src:/app/src
 
-  app:
-    build: .
-    ports:
-      - "8501:8501"
-    depends_on:
-      - db
-      - backend
-    environment:
-      DB_HOST: db
-      DB_USER: jacob
-      DB_PASSWORD: password123
-      DB_NAME: testgrader
-      GEMINI_API_KEY: ${GEMINI_API_KEY}
-      BACKEND_URL: http://backend:8000
-    volumes:
-      - ./app:/app
-
 volumes:
   postgres_data:
