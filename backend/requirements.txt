@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+psycopg2-binary
+pandas
+pillow
+google-generativeai
+opencv-python-headless
+pytesseract
+python-multipart

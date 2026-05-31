@@ -10,10 +10,10 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  app:
-    build: .
+  backend:
+    build: ./backend
     ports:
-      - "8501:8501"
+      - "8000:8000"
     depends_on:
       - db
     environment:
@@ -22,6 +22,34 @@ services:
       DB_PASSWORD: password123
       DB_NAME: testgrader
       GEMINI_API_KEY: ${GEMINI_API_KEY}
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./frontend/src:/app/src
+
+  app:
+    build: .
+    ports:
+      - "8501:8501"
+    depends_on:
+      - db
+      - backend
+    environment:
+      DB_HOST: db
+      DB_USER: jacob
+      DB_PASSWORD: password123
+      DB_NAME: testgrader
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      BACKEND_URL: http://backend:8000
     volumes:
       - ./app:/app
 
