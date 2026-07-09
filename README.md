@@ -131,15 +131,3 @@ docker compose up --build
 2. Select a test to see class stats and all submissions
 3. Click any row to expand per-question answers
 4. Toggle **Edit Mode** to delete or edit any submission
-
-## What I'd build next
-
-- **Evaluation harness.** Compare model-extracted answers and grades against teacher-corrected ground truth, run on every prompt or model change. Right now I trust the model and review by hand; that should be automated and gated on a regression threshold before any change ships.
-- **Better handwriting handling.** Gemini Vision struggles on messy student handwriting. Either fine-tune a fallback OCR or surface low-confidence extractions in the review step so the teacher knows where to focus.
-- **Cross-test analytics.** Class average is per-test today. A teacher wants to see which concepts a student misses across tests, which questions trip up the whole class, which tests skew too easy or hard. The data model already supports this; it's a frontend and aggregation problem.
-
-## Post-build retro
-
-The biggest thing I'd do differently is start with the evaluation harness, not finish without one. I built the grading logic, eyeballed it on a few sheets, and shipped. That works for a tool I use myself. It would not work for anyone else's classroom, and it makes prompt changes scary because I can't measure whether they helped.
-
-Second, the 3-step review flow is the right call but the UX for correcting OCR errors is slower than it should be. A tighter keyboard-driven correction interface would cut review time in half. That's the next thing I'll actually build.
